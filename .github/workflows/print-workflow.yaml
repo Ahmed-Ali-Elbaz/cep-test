@@ -1,0 +1,17 @@
+name: Print All GitHub Context Variables
+
+on: [push]
+
+jobs:
+  print-all-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print all predefined GitHub variables
+        run: |
+          echo "Printing all GitHub-provided environment variables:"
+          for var in $(printenv | sort); do
+            echo "$var"
+          done
